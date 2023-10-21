@@ -12,15 +12,17 @@ public class DataInit {
     
     @Bean
     CommandLineRunner runner(BookRepo bookRepo) {
-        var b1 = new Book("Domain Driven Design", "123", "RandomHouse");
-        var b2 = new Book("Spring In Action", "57567", "Oriely");
-        bookRepo.saveAll(List.of(b1,b2));
-        
-       bookRepo.findAll().forEach(
-           book -> {
-              System.out.println("Book Id: " + book.getId());
-              System.out.println("Book Title: " + book.getTitle());
-           }
-        );
+        return args -> {
+            var b1 = new Book("Domain Driven Design", "123", "RandomHouse");
+            var b2 = new Book("Spring In Action", "57567", "Oriely");
+            bookRepo.saveAll(List.of(b1,b2));
+            
+           bookRepo.findAll().forEach(
+               book -> {
+                  System.out.println("Book Id: " + book.getId());
+                  System.out.println("Book Title: " + book.getTitle());
+               }
+            );
+        };
     }
 }
