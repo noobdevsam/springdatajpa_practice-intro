@@ -13,6 +13,8 @@ public class DataInit {
     @Bean
     CommandLineRunner runner(BookRepo bookRepo) {
         return args -> {
+        	bookRepo.deleteAll();
+        	
             var b1 = new Book("Domain Driven Design", "123", "RandomHouse");
             var b2 = new Book("Spring In Action", "57567", "Oriely");
             bookRepo.saveAll(List.of(b1,b2));
