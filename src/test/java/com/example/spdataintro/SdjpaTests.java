@@ -1,6 +1,6 @@
 package com.example.spdataintro;
 
-import com.example.spdataintro.domain.Book;
+import com.example.spdataintro.model.Book;
 import com.example.spdataintro.repos.BookRepo;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +10,17 @@ import org.springframework.test.annotation.Commit;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@TestMethodOrder(MethodOrder.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
 @ComponentScan(basePackages = {"com.example.spdataintro.bootstrap"})
-public class Sdjpatests {
+public class SdjpaTests {
     
     @Autowired
     BookRepo bkRepo;
-    
+
+    @Test
     @Commit
     @Order(1)
-    @Test
     void jpatest_one() {
         long countBefore = bkRepo.count();
         assertThat(countBefore).isEqualTo(2);
@@ -30,9 +30,9 @@ public class Sdjpatests {
         long countAfter = bkRepo.count();
         assertThat(countBefore).isLessThan(countAfter);
     }
-    
-    @Order(2)
+
     @Test
+    @Order(2)
     void jpatest_one_transaction() {
         long countBefore = bkRepo.count();
         assertThat(countBefore).isEqualTo(3);
