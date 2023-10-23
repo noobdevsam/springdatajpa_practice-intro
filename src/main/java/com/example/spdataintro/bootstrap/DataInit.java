@@ -2,11 +2,12 @@ package com.example.spdataintro.bootstrap;
 
 import org.springframework.stereotype.Component;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.*;
 import com.example.spdataintro.repos.*;
 import com.example.spdataintro.model.*;
 import java.util.List;
 
+@Profile({"local","default"})
 @Component
 public class DataInit {
     
