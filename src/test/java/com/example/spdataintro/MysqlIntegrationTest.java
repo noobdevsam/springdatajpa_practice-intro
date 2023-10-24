@@ -25,3 +25,11 @@ public class MysqlIntegrationTest {
         assertThat(countBefore).isEqualTo(2);
     }
 }
+
+/*
+Here, @ActiveProfiles is used to select a different profile only for this test
+ class.
+ 
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) is
+ preventing h2-db to get auto configured.
+*/
